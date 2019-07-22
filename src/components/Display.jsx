@@ -1,9 +1,4 @@
 import React from 'react';
-import './Display.css';
+import { Display } from './styled';
 
-export default (props) =>
-  <div
-    className="display"
-  >
-    {props.value}
-  </div>
+export default (props) => <Display> {props.value} </Display>
