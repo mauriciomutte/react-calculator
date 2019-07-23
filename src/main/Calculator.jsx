@@ -78,16 +78,15 @@ export default class Calculator extends Component {
       return
     }
 
-    const clearDisplay = this.state.displayValue === '0' || this.state.clearDisplay;
-    const currentValue = clearDisplay ? '' : this.state.displayValue;
-    const displayValue = currentValue + n;
+    let {displayValue, clearDisplay, current, values} = this.state;
+
+    clearDisplay = displayValue === '0' || clearDisplay;
+    displayValue = (clearDisplay ? '' : displayValue) + n;
     this.setState({ displayValue, clearDisplay: false });
 
     if (n !== '.') {
-      const i = this.state.current;
       const newValue = parseFloat(displayValue);
-      const values = [...this.state.values];
-      values[i] = newValue;
+      values[current] = newValue;
       this.setState({ values });
     }
   }
