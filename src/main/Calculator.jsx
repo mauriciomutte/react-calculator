@@ -54,13 +54,10 @@ export default class Calculator extends Component {
         current: 1 
       });
     } else {
+      const {operation: op, values} = this.state;
       const equals = operation === '=';
-      const currentOperation = this.state.operation;
 
-      const values = [...this.state.values]
-
-      values[0] = calculation(values[0], values[1], currentOperation);
-      
+      values[0] = calculation(values[0], values[1], op);
       values[1] = 0;
 
       this.setState({
